@@ -4,8 +4,8 @@
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "./src/index.html",
-    "default_icon": "./images/image.png"
+    "default_popup": "./frontend/index.html",
+    "default_icon": "./frontend/image/image.png"
   },
   "permissions": [
     "storage",
