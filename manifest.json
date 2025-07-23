@@ -5,7 +5,7 @@
   "manifest_version": 3,
   "action": {
     "default_popup": "./frontend/index.html",
-    "default_icon": "./frontend/image/image.png"
+    "default_icon": "./frontend/images/image.png"
   },
   "permissions": [
     "storage",
