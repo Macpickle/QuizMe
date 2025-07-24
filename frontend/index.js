@@ -76,5 +76,7 @@ document.getElementById("generate").addEventListener("click", async () => {
     const mainContent = await getMainContent();
     const mainTag = await toggleBlur();
 
-});
+    console.log(mainContent)
 
+    // send request to generate questions
+});
