@@ -50,7 +50,8 @@ const toggleBlur = async () => {
     await chrome.scripting.executeScript({
         target: { tabId: tab.id },
         func: () => {
-            const mainElement = document.querySelector("main");
+            // get the main element
+            const mainElement = document.querySelector("main") || document.body;
             
             // add style based on the current state
             if (mainElement.classList.contains("blurred")) {
@@ -76,7 +77,22 @@ document.getElementById("generate").addEventListener("click", async () => {
     const mainContent = await getMainContent();
     const mainTag = await toggleBlur();
 
-    console.log(mainContent)
+    // disable click event to prevent multiple requests
+    const generateButton = document.getElementById("generate");
+    generateButton.disabled = true;
+    generateButton.innerText = "G";
 
-    // send request to generate questions
+    const response = await fetch("http://localhost:8000/api/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            content: mainContent,
+            token: "" 
+        })
+    }).then(res => res.json())
+      .catch(err => console.error("Error:", err));
+
+    console.log("Response:", response);
 });
